@@ -12,7 +12,6 @@ private const val REQUISICAO_NAO_SUCEDIDA = "Requisição não sucedida"
 class NoticiaWebClient(
     private val service: NoticiaService = AppRetrofit().noticiaService
 ) {
-
     private fun <T> executaRequisicao(
         call: Call<T>,
         quandoSucesso: (noticiasNovas: T?) -> Unit,

@@ -1,11 +1,15 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.test:core:1.1.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/core-1.1.0.aar/045c94217205e8dcec60f5459274765d/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/core-1.1.0.aar/045c94217205e8dcec60f5459274765d/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/core-1.1.0.aar/045c94217205e8dcec60f5459274765d/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/49050c42bed30677b1afbb1e1d58bffe/transformed/jetified-core-1.1.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/49050c42bed30677b1afbb1e1d58bffe/transformed/jetified-core-1.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/49050c42bed30677b1afbb1e1d58bffe/transformed/jetified-core-1.1.0/AndroidManifest.xml" />
     </CLASSES>
-    <JAVADOC />
-    <SOURCES />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.test/core/1.1.0/54143b9b86da3f417800f63ab13a1743be498b97/core-1.1.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.test/core/1.1.0/86cb6b14e847217e9a212da14701ac7ac69b70d6/core-1.1.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

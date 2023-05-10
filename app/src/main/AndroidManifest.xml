@@ -16,9 +16,15 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.activity.FormularioNoticiaActivity" />
-        <activity android:name=".ui.activity.VisualizaNoticiaActivity" />
-        <activity android:name=".ui.activity.ListaNoticiasActivity"
+        <activity
+            android:name=".ui.activity.FormularioNoticiaActivity"
+            android:screenOrientation="sensor"/>
+        <activity
+            android:name=".ui.activity.VisualizaNoticiaActivity"
+            android:screenOrientation="sensor"/>
+        <activity
+            android:name=".ui.activity.ListaNoticiasActivity"
+            android:screenOrientation="sensor"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
