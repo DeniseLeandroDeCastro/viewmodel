@@ -14,31 +14,33 @@ class NoticiaRepository(
 
     private val noticiasEncontradas = MutableLiveData<Resource<List<Noticia>?>>()
 
-    fun buscaTodos() : LiveData<Resource<List<Noticia>?>> {
-        buscaInterno(quandoSucesso = {
-            noticiasEncontradas.value = Resource (dado = it)
-        })
+    fun buscaTodos(): LiveData<Resource<List<Noticia>?>> {
+        val atualizaListaNoticias: (List<Noticia>) -> Unit = {
+            noticiasEncontradas.value = Resource(dado = it)
+        }
+        buscaInterno(quandoSucesso = atualizaListaNoticias)
         buscaNaApi(
-            quandoSucesso = {
-            noticiasEncontradas.value = Resource (dado = it)
-        }, quandoFalha = {
-            val resourceAtual = noticiasEncontradas.value
-            val resourceCriado: Resource<List<Noticia>?> = if (resourceAtual != null) {
-                Resource(dado = resourceAtual.dado, erro = it)
-            } else {
-                Resource(dado = null, erro = it)
-            }
-            noticiasEncontradas.value = resourceCriado
-        })
+            quandoSucesso = atualizaListaNoticias,
+            quandoFalha = { erro ->
+                val resourceAtual = noticiasEncontradas.value
+                val resourceDeFalha = criaResourceDeFalha<List<Noticia>?>(resourceAtual, erro)
+                noticiasEncontradas.value = resourceDeFalha
+            })
         return noticiasEncontradas
     }
 
     fun salva(
-        noticia: Noticia,
-        quandoSucesso: (noticiaNova: Noticia) -> Unit,
-        quandoFalha: (erro: String?) -> Unit
-    ) {
-        salvaNaApi(noticia, quandoSucesso, quandoFalha)
+        noticia: Noticia
+    ) : LiveData<Resource<Void?>> {
+        val liveData = MutableLiveData<Resource<Void?>>()
+        salvaNaApi(
+            noticia,
+            quandoSucesso = {
+                liveData.value = Resource(null)
+            }, quandoFalha = { erro ->
+                liveData.value = Resource(dado = null, erro = erro)
+            })
+        return liveData
     }
 
     fun remove(
@@ -87,7 +89,6 @@ class NoticiaRepository(
             .execute()
     }
 
-
     private fun salvaNaApi(
         noticia: Noticia,
         quandoSucesso: (noticiaNova: Noticia) -> Unit,
@@ -127,7 +128,6 @@ class NoticiaRepository(
                 quandoSucesso(it)
             }
         }).execute()
-
     }
 
     private fun removeNaApi(
@@ -143,7 +143,6 @@ class NoticiaRepository(
             quandoFalha = quandoFalha
         )
     }
-
 
     private fun removeInterno(
         noticia: Noticia,
@@ -170,5 +169,4 @@ class NoticiaRepository(
             }, quandoFalha = quandoFalha
         )
     }
-
 }

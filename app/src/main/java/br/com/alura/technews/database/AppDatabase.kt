@@ -15,7 +15,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract val noticiaDAO: NoticiaDAO
 
     companion object {
-
         fun getInstance(context: Context): AppDatabase {
             return Room.databaseBuilder(
                 context,
@@ -23,7 +22,5 @@ abstract class AppDatabase : RoomDatabase() {
                 NOME_BANCO_DE_DADOS
             ).build()
         }
-
     }
-
 }

@@ -68,5 +68,4 @@ class NoticiaWebClient(
     ) {
         executaRequisicao(service.remove(id), quandoSucesso, quandoFalha)
     }
-
 }
